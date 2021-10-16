@@ -1,0 +1,14 @@
+{
+    "manifest_version": 2,
+  
+    "name": "SMN CONAGUA SATELITE",
+    "description": "Esta Extension te permitira ver el clima por medio de imagenes satelitales de mexico",
+    "version": "1.0",
+    "browser_action": {
+     "default_icon": "cloud.png",
+     "default_popup": "popup.html"
+    },
+    "permissions": [
+     "activeTab"
+     ]
+  }
