@@ -20,7 +20,8 @@ function cargarTodo(){
         img.id = i;
         img.src = 'https://smn.conagua.gob.mx/tools/RESOURCES/GOES/GOES%20Este/M%C3%A9xico/Tope%20de%20Nubes/MEDIA/'+element+'.jpg';
         img.style.display = 'none';
-        img.style.height = '500px'; 
+        img.style.height = '500px';
+        img.loading="eager";
         if(img){
             document.getElementById('imagenes').appendChild(img);
         }
