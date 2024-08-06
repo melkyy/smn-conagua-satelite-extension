@@ -1,32 +1,50 @@
 body {
-    width: 700px;
-    height: 500px;
-    background-color: #373E40;
-    margin: 0px;
-    position: relative;
+  width: 700px;
+  height: 500px;
+  background-color: #373e40;
+  margin: 0px;
+  overflow-y: hidden;
 }
-#imagenes {
-    width: 100%;
-    height: 100%;
-    display: none;
+#images {
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
 }
+
 #loader {
-    border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid #C73E1D; /* Blue */
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    left: 54%;
-    line-height: 100px;
-    margin: -50px 0 0 -100px;
-    position: absolute;
-    text-align: center;
-    top: 40%;
-    line-height: normal;
-    animation: spin 2s linear infinite;
+  width: 108px;
+  height: 60px;
+  color: #f22626;
+  --c: radial-gradient(farthest-side, currentColor 96%, #0000);
+  background: var(--c) 100% 100% /30% 60%, var(--c) 70% 0 /50% 100%,
+    var(--c) 0 100% /36% 68%, var(--c) 27% 18% /26% 40%,
+    linear-gradient(currentColor 0 0) bottom/67% 58%;
+  background-repeat: no-repeat;
+  margin: -50px 0 0 -100px;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 55%;
+}
+#loader:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  opacity: 0.4;
+  animation: l7 1s infinite;
+}
+@keyframes l7 {
+  to {
+    transform: scale(1.8);
+    opacity: 0;
   }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
   }
+  100% {
+    transform: rotate(360deg);
+  }
+}

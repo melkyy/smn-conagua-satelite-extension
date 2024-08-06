@@ -1,23 +1,23 @@
-debugger;
 const CONAGUA_URL =
   "https://smn.conagua.gob.mx/tools/RESOURCES/GOES/GOES%20Este/M%C3%A9xico/Tope%20de%20Nubes/MEDIA/";
 
 document.addEventListener("DOMContentLoaded", async function (event) {
-  await load();
-  document.getElementById("loader").style.display = "none";
-  document.getElementById("images").style.display = "block";
+  const data = getImageUrl();
+  loadImages(data);
+  runAnimation(data);
 });
 
-async function load() {
-  const data = getImageUrl();
-  const images = await loadImages(data);
-  setTimeout(() => {
-    images.forEach((el) => {
-      document.getElementById("images").appendChild(el);
-    });
-  }, 1000);
-  runAnimation(data);
+
+let imagesLoaded = 1;
+
+function imageLoaded() {
+  imagesLoaded++;
+  if (imagesLoaded >= 9) {
+    document.getElementById("loader").style.display = "none";
+    document.getElementById("images").style.visibility = "visible";
+  }
 }
+
 async function loadImages(arrImages) {
   debugger;
   const images = [];
@@ -28,11 +28,14 @@ async function loadImages(arrImages) {
     img.src = CONAGUA_URL + element + ".jpg";
     img.style.display = "none";
     img.style.height = "500px";
-    img.loading = "eager";
+    img.style.width = "700px";
+    img.loading = "lazy";
     if (img) {
-      images.push(img);
+      document.getElementById("images").appendChild(img);
+      img.onload = imageLoaded;
     }
   }
+
   return images;
 }
 function pad2(n) {
